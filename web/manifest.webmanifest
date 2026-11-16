@@ -6,5 +6,6 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f3f5f8",
-  "theme_color": "#111827"
+  "theme_color": "#111827",
+  "description": "Arabic content production planning workspace"
 }
