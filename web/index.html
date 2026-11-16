@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111827"><link rel="manifest" href="/manifest.webmanifest">
+  <title>AI Content Agent Pro</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#172033;font-family:system-ui,Arial,sans-serif}
+    main{max-width:720px;margin:28px auto;padding:18px}header,section{background:white;border:1px solid #e4e8ef;border-radius:18px;padding:20px;margin-bottom:16px}
+    h1{margin:0 0 8px;font-size:25px}p{color:#657086;line-height:1.7}label{display:block;font-weight:700;margin:14px 0 8px}
+    input,textarea{width:100%;padding:13px;border:1px solid #ccd4df;border-radius:10px;font:inherit}textarea{min-height:180px;resize:vertical}
+    button{border:0;border-radius:10px;padding:13px 18px;background:#2563eb;color:white;font:inherit;font-weight:700;margin-top:12px;width:100%}
+    button:disabled{opacity:.55}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f6f8fb;padding:12px;border-radius:10px}
+    .hint{font-size:13px}.status{font-weight:700;color:#14532d}
+  </style>
+</head>
+<body><main>
+  <header><h1>AI Content Agent Pro</h1><p>حوّل الاسكربت إلى خطة مشاهد وتابع المهمة من موبايلك.</p></header>
+  <section>
+    <label for="api">رابط الـ API</label><input id="api" type="url" placeholder="https://your-server.example">
+    <label for="token">رمز الوصول</label><input id="token" type="password" autocomplete="off" placeholder="APP_TOKEN">
+    <label for="script">الاسكربت</label><textarea id="script" placeholder="الصق الاسكربت هنا..."></textarea>
+    <button id="start">ابدأ تجهيز المشاهد</button>
+    <p class="hint">هذه النسخة التجريبية تُنشئ خطة مشاهد فقط. لا تنتج MP4 قبل ربط خدمات الصور والصوت والفيديو.</p>
+    <div id="status" role="status"></div><pre id="result" hidden></pre>
+  </section>
+</main><script src="/app.js"></script></body></html>

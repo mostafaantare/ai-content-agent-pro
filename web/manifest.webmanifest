@@ -1,0 +1,10 @@
+{
+  "name": "AI Content Agent Pro",
+  "short_name": "Content Agent",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f5f8",
+  "theme_color": "#111827"
+}
