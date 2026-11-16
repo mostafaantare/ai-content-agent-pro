@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: ai-content-agent-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: APP_TOKEN
+        generateValue: true
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: ai-content-agent-redis
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+  - type: worker
+    name: ai-content-agent-worker
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: npm run worker
+    envVars:
+      - key: APP_TOKEN
+        fromService:
+          type: web
+          name: ai-content-agent-api
+          envVarKey: APP_TOKEN
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: ai-content-agent-redis
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+  - type: keyvalue
+    name: ai-content-agent-redis
+    plan: free
+    maxmemoryPolicy: noeviction
+  - type: web
+    name: ai-content-agent-pwa
+    runtime: static
+    plan: free
+    buildCommand: "echo static files ready"
+    staticPublishPath: ./web
