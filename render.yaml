@@ -9,29 +9,6 @@ services:
     envVars:
       - key: APP_TOKEN
         generateValue: true
-      - key: REDIS_URL
-        fromService:
-          type: keyvalue
-          name: ai-content-agent-redis
-          property: connectionString
-  - type: worker
-    name: ai-content-agent-worker
-    runtime: docker
-    plan: free
-    dockerfilePath: ./Dockerfile
-    dockerContext: .
-    dockerCommand: npm run worker
-    envVars:
-      - key: REDIS_URL
-        fromService:
-          type: keyvalue
-          name: ai-content-agent-redis
-          property: connectionString
-  - type: keyvalue
-    name: ai-content-agent-redis
-    plan: free
-    ipAllowList: []
-    maxmemoryPolicy: noeviction
   - type: web
     name: ai-content-agent-pwa
     runtime: static
